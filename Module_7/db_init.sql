@@ -8,11 +8,6 @@ CREATE USER 'pysports_user'@'localhost' IDENTIFIED WITH mysql_native_password BY
 GRANT ALL PRIVILEGES ON pysports.* TO'pysports_user'@'localhost';
 
 
--- drop tables if they are present
-DROP TABLE IF EXISTS player;
-DROP TABLE IF EXISTS team;
-
-
 -- create the team table 
 CREATE TABLE team (
     team_id     INT             NOT NULL        AUTO_INCREMENT,
@@ -39,6 +34,15 @@ INSERT INTO team(team_name, mascot)
 
 INSERT INTO team(team_name, mascot)
     VALUES('Team Sauron', 'Orcs');
+
+
+-- drop tables if they are present
+DROP TABLE IF EXISTS player;
+
+
+-- select statement to return team_id or the selected team_name
+SELECT team_id FROM team WHERE team_name = 'Team Sauron';
+SELECT team_id FROM team WHERE team_name = 'Team Gandalf';
 
 
 -- insert player records 
